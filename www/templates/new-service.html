@@ -1,0 +1,42 @@
+<div class="modal">
+
+  <!-- Modal header bar -->
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">New Visit</h1>
+    <button class="button button-clear button-positive" ng-click="closeNewService()">Cancel</button>
+  </ion-header-bar>
+
+  <!-- Modal content area -->
+  <ion-content>
+    <form ng-submit="createService(service)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Service Date</span>
+          <input type="date" ng-model="service.date">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Milage</span>
+          <input type="number" ng-model="service.milage" placeholder="(km)">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Service Type
+          </div>
+          <select>
+            <option>Service #1</option>
+            <option>Service #2</option>
+            <option>Service #3</option>
+            <option>Service #4</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Amount Paid</span>
+          <input type="number" ng-model="service.amountPaid" placeholder="0.00$">
+        </label>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive">Add Service</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

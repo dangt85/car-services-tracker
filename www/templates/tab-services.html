@@ -1,0 +1,32 @@
+<ion-view view-title="Car Services">
+  <ion-nav-buttons side="primary">
+    <button class="button button-icon icon ion-ios-minus-outline" ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-compose" ng-click="newService()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list show-delete="data.showDelete"
+          show-reorder="data.showReorder"
+          can-swipe="data.listCanSwipe">
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="service in services">
+        <h2>{{ service.date | date }}</h2>
+        <p>{{ service.milage }}</p>
+        <p>{{ service.serviceType }}</p>
+        <p>{{ service.amountPaid | currency }}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <!-- <ion-option-button class="button-positive"
+                           ng-click="share(service)">
+          Share
+        </ion-option-button> -->
+        <ion-option-button class="button-info"
+                           ng-click="edit(service)">
+          Edit
+        </ion-option-button>
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="services.splice($index, 1)">
+        </ion-delete-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
