@@ -1,16 +1,7 @@
-angular.module('starter.controllers', [ /*'ionic-datepicker'*/ ])
-.controller('ServicesCtrl', function($scope, $filter, $ionicModal, Services) {
+angular.module('starter.controllers', [ 'ionic' ])
+.controller('ServicesCtrl', function($scope, $ionicModal, Services) {
 
   $scope.currentDate = new Date();
-  // $scope.currentDate = $filter("date")(Date.now());
-
-  $scope.datePickerCallback = function(val) {
-    if (!val) { 
-      console.log('Date not selected');
-    } else {
-      console.log('Selected date is : ', val);
-    }
-  };
 
   $scope.services = Services.all();
 
