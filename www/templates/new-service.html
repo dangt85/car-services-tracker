@@ -1,15 +1,39 @@
+<!-- <ion-view view-title="">
+  <ion-nav-buttons side="primary">
+    <button class="button button-clear button-positive" ng-click="remove(service)">Delete</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="secondary">
+    <button class="button button-clear button-positive" ng-click="closeNewService()">Cancel</button>
+  </ion-nav-buttons>
+  <ion-content> -->
 <div class="modal">
 
   <!-- Modal header bar -->
   <ion-header-bar class="bar-secondary">
-    <h1 class="title">New Visit</h1>
-    <button class="button button-clear button-positive" ng-click="closeNewService()">Cancel</button>
+    <!-- <ion-nav-buttons side="primary"> -->
+      <button class="button button-clear button-positive" ng-click="remove(service)">Delete</button>
+    <!-- </ion-nav-buttons> -->
+    <h1 class="title">{{ title }}</h1>
+    <!-- <ion-nav-buttons side="secondary"> -->
+      <button class="button button-clear button-positive" ng-click="closeNewService()">Cancel</button>
+    <!-- </ion-nav-buttons> -->
   </ion-header-bar>
 
   <!-- Modal content area -->
   <ion-content>
     <form ng-submit="createService(service)">
       <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Service Type
+          </div>
+          <select ng-model="service.type">
+            <option>Service #1</option>
+            <option>Service #2</option>
+            <option>Service #3</option>
+            <option>Service #4</option>
+          </select>
+        </label>
         <label class="item item-input">
           <span class="input-label">Service Date</span>
           <input type="date" ng-model="service.date">
@@ -18,24 +42,21 @@
           <span class="input-label">Milage</span>
           <input type="number" ng-model="service.milage" placeholder="(km)">
         </label>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Service Type
-          </div>
-          <select>
-            <option>Service #1</option>
-            <option>Service #2</option>
-            <option>Service #3</option>
-            <option>Service #4</option>
-          </select>
-        </label>
         <label class="item item-input">
           <span class="input-label">Amount Paid</span>
           <input type="number" ng-model="service.amountPaid" placeholder="0.00$">
         </label>
+        <label class="item item-input">
+          <span class="input-label">Service Rep</span>
+          <input type="text" ng-model="service.rep" placeholder="John Smith">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Location</span>
+          <input type="text" ng-model="service.location" placeholder="Kia Hunt Club">
+        </label>
       </div>
       <div class="padding">
-        <button type="submit" class="button button-block button-positive">Add Service</button>
+        <button type="submit" class="button button-block button-positive">Save</button>
       </div>
     </form>
   </ion-content>

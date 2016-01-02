@@ -1,24 +1,28 @@
 angular.module('starter.services', [])
-.factory('Services', function() {
+.factory('Services', ['$localstorage', function($localstorage) {
 
+  //var services = $localstorage.get('services', []); 
   var services = [{
     id: 0,
-    date: new Date(2011, 11, 1),
+    date: new Date(2014, 11, 1),
     milage: 600,
-    serviceType: 'Service #1',
-    amountPaid: 80
+    type: 'Service #1',
+    amountPaid: 80,
+    rate: 3
   }, {
     id: 1,
     date: new Date(2012, 4, 12),
     milage: 4500,
-    serviceType: 'Service #2',
-    amountPaid: 150
+    type: 'Service #2',
+    amountPaid: 150,
+    rate: 2
   }, {
     id: 2,
-    date: new Date(2012, 10, 12),
+    date: new Date(2015, 10, 12),
     milage: 9000,
-    serviceType: 'Service #1',
-    amountPaid: 80
+    type: 'Service #1',
+    amountPaid: 80,
+    rate: 4
   }];
 
   return {
@@ -40,7 +44,30 @@ angular.module('starter.services', [])
       return null;
     }
   }
-})
+}])
+
+.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      if(typeof value === 'string' || value instanceof String)
+        $window.localStorage[key] = JSON.stringify(value);
+      else if(typeof value === 'object' || value instanceof Object)
+        $window.localStorage[key] = value;
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    },
+    removeObject: function(key) {
+      delete $window.localStorage[key];
+    }
+  }
+}])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

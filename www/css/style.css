@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+ul.ion-rating li {
+	display: inline;
+	border: 0px;
+	background: none;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+ul.ion-rating li i {
+	font-size: 30px;
+}

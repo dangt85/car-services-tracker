@@ -2,20 +2,13 @@ angular.module('starter.controllers', [ 'ionic' ])
 .controller('ServicesCtrl', function($scope, $ionicModal, Services) {
 
   $scope.currentDate = new Date();
+  $scope.max = 5;
+  $scope.readonly = true;
 
   $scope.services = Services.all();
 
   $scope.data = {
     showDelete: false
-  };
-
-  $scope.remove = function(service) {
-    Services.remove(service);
-  };
-
-  $scope.moveItem = function(service, fromIndex, toIndex) {
-    $scope.services.splice(fromIndex, 1);
-    $scope.services.splice(toIndex, 0, service);
   };
 
   $ionicModal.fromTemplateUrl('templates/new-service.html', function(modal) {
@@ -27,10 +20,21 @@ angular.module('starter.controllers', [ 'ionic' ])
 
   // Open our new service modal
   $scope.newService = function() {
+    $scope.title = 'New Service';
+    $scope.service = {date: $scope.currentDate};
+    $scope.serviceModal.show();
+  };
+  
+  $scope.remove = function(service) {
+    Services.remove(service);
+  };
+
+  $scope.edit = function(service) {
+    $scope.title = 'Edit Service';
+    $scope.service = service;
     $scope.serviceModal.show();
   };
 
-  // Close the new service modal
   $scope.closeNewService = function() {
     $scope.serviceModal.hide();
   };

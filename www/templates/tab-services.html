@@ -1,12 +1,12 @@
 <ion-view view-title="Car Services">
-  <ion-nav-buttons side="primary">
+  <!-- <ion-nav-buttons side="primary">
     <button class="button button-icon icon ion-ios-minus-outline" ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
-  </ion-nav-buttons>
+  </ion-nav-buttons> -->
   <ion-nav-buttons side="secondary">
     <button class="button button-icon icon ion-compose" ng-click="newService()"></button>
   </ion-nav-buttons>
   <ion-content>
-    <ion-list show-delete="data.showDelete"
+    <!-- <ion-list show-delete="data.showDelete"
           show-reorder="data.showReorder"
           can-swipe="data.listCanSwipe">
       <ion-item class="item-remove-animate item-icon-right" ng-repeat="service in services">
@@ -23,6 +23,42 @@
                            ng-click="services.splice($index, 1)">
         </ion-delete-button>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+    <div class="list card" ng-repeat="service in services | orderBy : 'date' : true">
+
+      <div class="item">
+      <!-- <div class="item item-avatar"> -->
+        <!-- <img src="mcfly.jpg"> -->
+        <h2>{{ service.type }}</h2>
+        <p>{{ service.date | date:'longDate' }}</p>
+      </div>
+
+      <div class="item item-body">
+        <!-- <img class="full-image" src="delorean.jpg"> -->
+        <p><strong>Milage:</strong> {{ service.milage }} km</p>
+        <p><strong>Amount Paid:</strong> {{ service.amountPaid | currency }}</p>
+        <!-- <p><strong>Description:</strong> {{ service.description }}</p>
+        <p><strong>Service Rep:</strong> {{ service.rep }}</p>
+        <p><strong>Location:</strong> {{ service.location }}</p> -->
+        <p>
+          <strong>Rating:</strong>
+          {{ service.rate }}<br />
+          <!-- <a href="#" class="subdued">{{ service.rate }}</a> -->
+          <rating ng-model="service.rate"></rating>
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comment
+        </a>
+        <a class="tab-item" href="#" ng-click="edit(service)">
+          <i class="icon ion-edit"></i>
+          Edit
+        </a>
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>

@@ -29,8 +29,8 @@ describe('Controller', function() {
 			expect(scope.services.length).toBe(3);
 		});
 
-		it('should track service\'s date, milage, service type, amount paid,' +
-			'description, notes, rating, agent, invoice scan', function() {
+		it('should track service\'s date, milage, type, amount paid,' +
+			'description, notes, rating, agent, location, invoice scan', function() {
 
 			// TODO create mock
 			expect(true).toBe(false);
